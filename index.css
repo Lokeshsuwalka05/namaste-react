@@ -28,14 +28,19 @@
   /* border: 2px solid black; */
 }
 .card{
+  display: flex;
+  flex-direction: column;
   background-color:#f0f0f0;
   color: black;
   padding: 10px;
   margin: 20px;
-  height: 200px;
-  width:230px;
+  width:250px;
+  height: 300px;
   font-size: 20px;
   /* border: 2px solid black; */
+}
+.card>.cuisine{
+  word-wrap:break-word;
 }
 
 .card >.food-image{
