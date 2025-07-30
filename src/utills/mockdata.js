@@ -15,7 +15,7 @@ const resList= [
 "Snacks",
 "Fast Food"
 ],
-"avgRating": 4.1,
+"avgRating": 3.8,
 "parentId": "547",
 "avgRatingString": "4.1",
 "totalRatingsString": "828",
