@@ -58,3 +58,26 @@
   width:20px;
   height:20px;
 }
+
+/* for Shimmer container */
+.Shimmer-Container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.Shimmer-card{
+  background-color:#f0f0f0;
+  color: black;
+  padding: 10px;
+  margin: 20px;
+  width:250px;
+  height: 300px;
+  font-size: 20px;
+
+}
+
+.login-btn{
+   cursor: pointer;
+   width: 70px;
+   height: 30px;
+   margin:15px;
+}
