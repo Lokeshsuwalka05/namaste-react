@@ -39,7 +39,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <button
+      
+
+      <div className="Search-Functionality">
+        <button
         className="filter-btn"
         onClick={() => {
           const filterList = ListOfRestaurants.filter(
@@ -51,8 +54,6 @@ const Body = () => {
       >
         Top Rated Restaurants
       </button>
-
-      <div className="Search-Functionality">
         <input
           className="search-field"
           value={searchText}
