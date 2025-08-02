@@ -52,27 +52,29 @@ const Body = () => {
         Top Rated Restaurants
       </button>
 
-      <input
-        className="search-field"
-        value={searchText}
-        onChange={(e) => {
-          setsearchText(e.target.value);
-        }}
-      ></input>
+      <div className="Search-Functionality">
+        <input
+          className="search-field"
+          value={searchText}
+          onChange={(e) => {
+            setsearchText(e.target.value);
+          }}
+        ></input>
 
-      <button
-        onClick={() => {
-          // console.log(ListOfRestaurants);
-          const filteredResto = ListOfRestaurants.filter((res) => {
-            return res.info.name
-              .toLowerCase()
-              .includes(searchText.toLowerCase());
-          });
-          setfilteredRestaurants(filteredResto);
-        }}
-      >
-        Search
-      </button>
+        <button
+          onClick={() => {
+            // console.log(ListOfRestaurants);
+            const filteredResto = ListOfRestaurants.filter((res) => {
+              return res.info.name
+                .toLowerCase()
+                .includes(searchText.toLowerCase());
+            });
+            setfilteredRestaurants(filteredResto);
+          }}
+        >
+          Search
+        </button>
+      </div>
 
       <div className="card-container">
         {filteredRestaurants.map((restaurant) => {
