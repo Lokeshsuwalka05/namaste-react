@@ -2,13 +2,20 @@ import ResCard from "./ResCard";
 // import resList from "../utills/mockdata";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-import { Swiggy_API } from "../utills/constants";
+import { ResCard_API } from "../utills/constants";
+import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
+
+
 
 const Body = () => {
   // local state variable->super powerful variable
   const [ListOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setfilteredRestaurants] = useState([]);
   const [searchText, setsearchText] = useState("");
+  const params=useParams();
+  console.log(params);
+ 
   // const arr=useState(resList);
   // const Restaurants=arr[0];
   // const setRestaurants=arr[1];
@@ -18,7 +25,7 @@ const Body = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    const data = await fetch(Swiggy_API);
+    const data = await fetch(ResCard_API);
     const json = await data.json();
     // use optional chaining here
     setListOfRestaurants(
@@ -80,7 +87,7 @@ const Body = () => {
       <div className="card-container">
         {filteredRestaurants.map((restaurant) => {
           return (
-            <ResCard key={restaurant.info.id} resObj={restaurant}></ResCard>
+            <Link key={restaurant.info.id} to={"/Restaurants/"+restaurant.info.id}><ResCard resObj={restaurant} ></ResCard></Link>
           );
         })}
       </div>
