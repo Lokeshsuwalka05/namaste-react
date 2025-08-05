@@ -64,7 +64,10 @@ const RestaurantMenu = () => {
         <h2>Menu</h2>
         <ItemCards
           itemCard={
-            resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[3].card.card
+            resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card
+              .itemCards
+            ||
+             resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
               .itemCards
           }
         ></ItemCards>
