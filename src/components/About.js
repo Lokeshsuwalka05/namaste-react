@@ -10,14 +10,18 @@ class About extends React.Component{
   componentDidMount(){
     console.log("parent componentDidMount ");
   }
+  componentDidUpdate(){
+    console.log("parent componentDidUpdate ");
+
+  }
   render(){
     console.log("parent rendered");
     return(
       <>
         <h1>Hello Guys</h1>
-        <p>This is the Determination Of Lokesh</p>
-        {/* <User name={"lokesh suwalka"} location={"Jaipur"} contact={"@LokeshSuwalka05"}/> */}
-        <UserClass name={"lokesh suwalka"} location={"Jaipur"} contact={"@LokeshSuwalka05"}/>
+        <p>This is the About page Of Lokesh</p>
+        <UserClass name="first" />
+        
       </>
     )
   }
