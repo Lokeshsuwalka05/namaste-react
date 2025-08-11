@@ -1,33 +1,14 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import Shimmer from "./Shimmer";
-import React from "react";
 import ItemCards from "./ItemCards";
-import { RestaurantMenu_API } from "../utills/constants";
 import { useParams } from "react-router";
-// const param=useParams();
+import useRestaurantMenu from "../utills/useRestaurantMenu";
+
+//Want Single Responsibility principle so i have to create a Hook.
 const RestaurantMenu = () => {
-  const [resInfo, setresInfo] = useState(null);
   // console.log(resInfo);
   const {resid}=useParams();
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.91360&lng=75.78580&restaurantId="+resid+"&catalog_qa=undefined&submitAction=ENTER"
-    );
-
-    const json = await data.json();
-    // this is for Res menu
-    // console.log(json?.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[3]);
-    // this is for address of resto
-    // console.log(json);
-    setresInfo(json?.data);
-    // console.log(json.data.cards[2].card.card.info);
-  };
+  const resInfo=useRestaurantMenu(resid);
+  
   if (resInfo == null) {
     return <Shimmer></Shimmer>;
   }
