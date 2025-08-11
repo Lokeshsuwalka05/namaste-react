@@ -12,6 +12,9 @@ class UserClass extends React.Component {
   }
   async componentDidMount(){
     console.log(this.props.name+"child componentDidMount ");
+    // this.timer=setInterval(()=>{
+    //      console.log("hello world");
+    // },1000);
     const data=await fetch("https://api.github.com/users/Lokeshsuwalka05");
     const json=await data.json();
     this.setState({
@@ -22,6 +25,7 @@ class UserClass extends React.Component {
     console.log(this.props.name+"componentDidUpdate called");
   }
   componentWillUnmount(){
+    // clearInterval(this.timer);
     console.log(this.props.name+"componentWillUnmount called");
   }
   render() {
