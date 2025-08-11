@@ -1,8 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const User=(props)=>{
   const {name,location,contact}=props;
   const [count,setcount]=useState(0);
   const [count1,setcount1]=useState(1);
+  useEffect(()=>{
+    console.log("useEffect called");
+          const timer=setInterval(()=>{
+             console.log("Hello world");
+          },1000)
+          return ()=>{
+            console.log("useEffect return called");
+            clearInterval(timer);
+          }
+  },[])
+  console.log("User renderd");
   return (
     <div className="user-card" style={{ border: "2px solid black", marginBottom: "10px" }}>
       <p>Name:{name}</p>
