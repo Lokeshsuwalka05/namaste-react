@@ -5,25 +5,34 @@ const ResCard = (props) => {
   // const {info}=props.resObj;
   // const obj=info;
   // const obj=props.resObj.info;
-  const {cloudinaryImageId,name,avgRating,cuisines,areaName,sla}=props.resObj.info;
+  const { cloudinaryImageId, name, avgRating, cuisines, areaName, sla } =
+    props.resObj.info;
+  const cuisines_text = cuisines.join(",");
+  const display_text =
+    cuisines_text.length > 30
+      ? cuisines_text.slice(0, 30) + "..."
+      : cuisines_text;
   return (
-    <div className="card">
-        
-        <div className="food-image">
-          <img src={CLOUDINARY_IMG_CDN+cloudinaryImageId}></img>
+    <div className="max-w-fit h-[330px] bg-white  border border-gray-200 rounded-lg shadow-sm p-3 hover:bg-gray-100 font-light">
+      <div className="food-image ">
+        <img
+          src={CLOUDINARY_IMG_CDN + cloudinaryImageId}
+          className=" w-96 h-[200px] rounded-2xl"
+        ></img>
+      </div>
+      <div className="res-name font-bold">{name}</div>
+      <div className="flex">
+        <div className="w-6">
+          <img src={star_icon}></img>
         </div>
-        <div className="res-name">{name}</div>
-        <div className="star-rating-time">
-          <div className="star">
-            <img src={star_icon}></img>
-          </div>
-          <div className="rating-time">
-            <span>{avgRating} </span>
-            {sla.slaString}
-          </div>
+        <div className="rating-time ">
+          <span>{avgRating} </span>
+          <span className="font-semibold">{sla.slaString}</span>
         </div>
-        <div className="cuisine">{cuisines.join(",")}</div>
-        <div className="address">{areaName}</div>
+      </div>
+
+      <div>{display_text}</div>
+      <div className="address">{areaName}</div>
     </div>
   );
 };
