@@ -13,7 +13,7 @@ const ResCard = (props) => {
       ? cuisines_text.slice(0, 30) + "..."
       : cuisines_text;
   return (
-    <div className="max-w-fit h-[330px] bg-white  border border-gray-200 rounded-lg shadow-sm p-3 hover:bg-gray-100 font-light">
+    <div className="max-w-fit h-[330px] bg-white  border border-gray-200 rounded-lg shadow-sm p-3 hover:bg-gray-100 font-light hover:border-2">
       <div className="food-image ">
         <img
           src={CLOUDINARY_IMG_CDN + cloudinaryImageId}
@@ -35,6 +35,19 @@ const ResCard = (props) => {
       <div className="address">{areaName}</div>
     </div>
   );
+};
+
+export const withDiscountLabel = (Resta) => {
+  return (props) => {
+    console.log(props);
+    const {header,subHeader}=props?.resObj?.info.aggregatedDiscountInfoV3;
+    return (
+      <div className="relative">
+        <label className="absolute font-extrabold text-white top-44 left-8">{header+" "+subHeader}</label>
+        <ResCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default ResCard;
