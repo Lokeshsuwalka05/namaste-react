@@ -6,9 +6,9 @@ import useRestaurantMenu from "../utills/useRestaurantMenu";
 //Want Single Responsibility principle so i have to create a Hook.
 const RestaurantMenu = () => {
   // console.log(resInfo);
-  const {resid}=useParams();
-  const resInfo=useRestaurantMenu(resid);
-  
+  const { resid } = useParams();
+  const resInfo = useRestaurantMenu(resid);
+
   if (resInfo == null) {
     return <Shimmer></Shimmer>;
   }
@@ -26,10 +26,10 @@ const RestaurantMenu = () => {
   //   resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[3].card.card;
   // console.log(itemCards);
   return (
-    <>
-      <div className="res-details">
-        <h1>{name}</h1>
-        <div className="res-properties" style={{ border: "2px solid green" }}>
+    <div className="w-6/12 m-auto">
+      <h1 className="font-bold text-3xl mb-9">{name}</h1>
+      <div className="border border-gray-200 pl-4 pr-4 pb-4 rounded-4xl bg-gray-100 ">
+        <div className="border border-gray-200 rounded-2xl p-4 shadow-lg  bg-white">
           <h3>
             {avgRating + "(" + totalRatings + " ratings" + ")"}-
             {costForTwoMessage}
@@ -45,15 +45,14 @@ const RestaurantMenu = () => {
         <h2>Menu</h2>
         <ItemCards
           itemCard={
-            resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card
-              .itemCards
-            ||
-             resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
-              .itemCards
+            resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]
+              ?.card?.card.itemCards ||
+            resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+              ?.card?.card.itemCards
           }
         ></ItemCards>
       </div>
-    </>
+    </div>
   );
 };
 export default RestaurantMenu;
