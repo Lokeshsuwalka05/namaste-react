@@ -1,27 +1,31 @@
+import { useState } from "react";
+import { CLOUDINARY_IMG_CDN } from "../utills/constants";
 const ItemList = (item) => {
-  const { title } = item.item;
-  const { itemCards } = item.item;
-  console.log(item);
+  const [expanded, setexpanded] = useState(false);
+  const [more, setmore] = useState("more");
+  const { name, description, price, imageId, defaultPrice } = item.item.card.info;
+  const shortText = description.slice(0, 150);
   return (
     <>
-      <div className="border border-gray-600 m-3 p-2">
-        <div className="flex justify-between m-2 p-2 border">
-          <span>
-            <h1>{title + "(" + itemCards.length + ")"}</h1>
-          </span>
-          <span>⬇️</span>
+      <div className=" flex border-b-2 border-gray-300 mt-6 pb-4">
+        <div className="w-8/12">
+          <h1 className="font-bold">{name}</h1>
+          <p className="font-semibold">{price / 100||defaultPrice/100}</p>
+          {expanded ? description : shortText}
+          {description.length > 150 && (
+            <span
+              onClick={() => setexpanded((prev) => !prev)}
+              className="text-blue-500 font-bold cursor-pointer"
+            >
+              {expanded ? "show less" : "...more"}
+            </span>
+          )}
         </div>
-        <div>
-          {itemCards.map((item) => {
-            const { name, description } = item.card.info;
-            return (
-              <>
-                <div className="">
-                   
-                </div>
-              </>
-            );
-          })}
+        <div className="w-4/12">
+          <img
+            src={CLOUDINARY_IMG_CDN + imageId}
+            className="rounded-2xl size-40"
+          ></img>
         </div>
       </div>
     </>
