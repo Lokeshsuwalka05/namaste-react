@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { CLOUDINARY_IMG_CDN } from "../utills/constants";
-const ItemList = (item) => {
+const ItemList = ({item}) => {
   const [expanded, setexpanded] = useState(false);
   const [more, setmore] = useState("more");
-  const { name, description, price, imageId, defaultPrice } = item.item.card.info;
+  const { name, description, price, imageId, defaultPrice } = item.card.info;
   const shortText = description.slice(0, 150);
   return (
     <>
