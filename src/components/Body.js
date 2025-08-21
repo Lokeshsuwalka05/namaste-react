@@ -1,10 +1,11 @@
 import ResCard, { withDiscountLabel } from "./ResCard";
 // import resList from "../utills/mockdata";
-import { use, useState } from "react";
+import { use, useContext, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useBody from "../utills/useBody";
 import useOnlineStatus from "../utills/useOnlineStatus";
+import UserContext from "../utills/UserContext";
 
 const Body = () => {
   // local state variable->super powerful variable
@@ -16,6 +17,7 @@ const Body = () => {
     return <h1>You Are Offline,Please Connect to the Network</h1>;
   }
   const RestaurantDiscountLabelCard = withDiscountLabel(ResCard);
+  const {loggedInUser,setUserName}=useContext(UserContext);
   // const arr=useState(resList);
   // const Restaurants=arr[0];
   // const setRestaurants=arr[1];
@@ -66,6 +68,16 @@ const Body = () => {
         >
           Search
         </button>
+
+        <input
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 h-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Type..."
+          required
+          value={loggedInUser}
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+        ></input>
       </div>
 
       <div className="m-2 p-2 grid grid-cols-4 gap-6">
