@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header";
 import Body from "./src/components/Body";
@@ -9,19 +9,31 @@ import About from "./src/components/About";
 import Error from "./src/components/Error";
 import { Outlet } from "react-router";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+import UserContext from "./src/utills/UserContext";
 
 const Grocery=lazy(()=>{
   return import("./src/components/Grocery");
 })
 
 const Applayout = () => {
+  const [userName,setUserName]=useState("default user");
+  useEffect(()=>{
+     //Make a api call to get username and password
+     const data={
+       name:"Lokesh Suwalka"
+     }
+     setUserName(data.name);
+  },[])
   return (
-    <div className="App">
-      <Header />
-      <Outlet/>
-    </div>
+    <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
+      <div className="App">
+        <Header />
+        <Outlet/>
+      </div>
+    </UserContext.Provider>
   );
 };
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -54,3 +66,5 @@ const appRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);
+ 
+
