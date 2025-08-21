@@ -2,6 +2,7 @@ import User from "./User";
 import React from "react";
 import UserClass from "./UserClass";
 import User from "./User";
+import UserContext from "../utills/UserContext"
 class About extends React.Component{
   constructor(props){
     super(props);
@@ -19,6 +20,7 @@ class About extends React.Component{
     console.log("parent rendered");
     return(
       <>
+       
         <h1>Hello Guys</h1>
         <p>This is the About page Of Lokesh</p>
         {/* <User/> */}
