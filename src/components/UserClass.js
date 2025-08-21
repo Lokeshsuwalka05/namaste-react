@@ -1,5 +1,6 @@
 import React from "react";
 import Shimmer from "./Shimmer";
+import UserContext from "../utills/UserContext";
 
 class UserClass extends React.Component {
   constructor(props){
@@ -41,7 +42,9 @@ class UserClass extends React.Component {
         <img src={avatar_url}></img>
         <p>Followers:{followers}</p>
         <p>Following:{following}</p>
-        <p></p>
+        <UserContext.Consumer>
+        {({loggedInUser})=><h1 className="font-bold">{loggedInUser}</h1>}
+        </UserContext.Consumer>
       </div>
     );
   }
