@@ -8,3 +8,8 @@ App(
          Email
 )
 */
+
+redux store
+- install @reduxjs/toolkit
+- install react-redux
+- then connect our app with the store
