@@ -10,14 +10,16 @@ import UserContext from "../utills/UserContext";
 const Body = () => {
   // local state variable->super powerful variable
   const [searchText, setsearchText] = useState("");
-  const { ListOfRestaurants, filteredRestaurants, setfilteredRestaurants } =useBody();
+  const { ListOfRestaurants, filteredRestaurants, setfilteredRestaurants } =
+    useBody();
   console.log(ListOfRestaurants);
+
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false) {
     return <h1>You Are Offline,Please Connect to the Network</h1>;
   }
   const RestaurantDiscountLabelCard = withDiscountLabel(ResCard);
-  const {loggedInUser,setUserName}=useContext(UserContext);
+  const { loggedInUser, setUserName } = useContext(UserContext);
   // const arr=useState(resList);
   // const Restaurants=arr[0];
   // const setRestaurants=arr[1];
@@ -45,32 +47,35 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
-        <input
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 h-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Type..."
-          required
-          value={searchText}
-          onChange={(e) => {
-            setsearchText(e.target.value);
-          }}
-        ></input>
-        <button
-          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
-          onClick={() => {
-            // console.log(ListOfRestaurants);
-            const filteredResto = ListOfRestaurants.filter((res) => {
-              return res.info.name
-                .toLowerCase()
-                .includes(searchText.toLowerCase());
-            });
-            setfilteredRestaurants(filteredResto);
-          }}
-        >
-          Search
-        </button>
+        <div className="flex space-x-2">
+          <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 h-10 p-2.5"
+            placeholder="Type..."
+            required
+            value={searchText}
+            onChange={(e) => {
+              setsearchText(e.target.value);
+            }}
+            data-testid="searchInput"
+          ></input>
+          <button
+            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            onClick={() => {
+              // console.log(ListOfRestaurants);
+              const filteredResto = ListOfRestaurants.filter((res) => {
+                return res.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase());
+              });
+              setfilteredRestaurants(filteredResto);
+            }}
+          >
+            Search
+          </button>
+        </div>
 
         <input
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 h-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-40 h-10 p-2.5 "
           placeholder="Type..."
           required
           value={loggedInUser}
@@ -82,13 +87,13 @@ const Body = () => {
 
       <div className="m-2 p-2 grid grid-cols-4 gap-6">
         {filteredRestaurants.map((restaurant) => {
-          const obj=restaurant?.info?.aggregatedDiscountInfoV3;
+          const obj = restaurant?.info?.aggregatedDiscountInfoV3;
           return (
             <Link
               key={restaurant.info.id}
               to={"/Restaurants/" + restaurant.info.id}
             >
-              {Object.keys(obj||{}).length === 0 ? (
+              {Object.keys(obj || {}).length === 0 ? (
                 <ResCard resObj={restaurant}></ResCard>
               ) : (
                 <RestaurantDiscountLabelCard
