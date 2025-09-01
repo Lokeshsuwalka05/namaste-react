@@ -1,11 +1,11 @@
 import ItemList from "./ItemList";
-const ItemCards=({itemCards,showItems})=>{
+const ItemCards = ({ itemCards, showItems }) => {
   return (
-    <>
-        {itemCards.map((item,index) => {
-          return showItems&&<ItemList key={index} item={item}></ItemList>;
-        })} 
-    </>
-  )
-}
+    <div>
+      {itemCards.map((item, index) => {
+        return showItems && <ItemList key={index} item={item}></ItemList>;
+      })}
+    </div>
+  );
+};
 export default ItemCards;
