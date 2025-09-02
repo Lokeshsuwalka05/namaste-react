@@ -1,5 +1,3 @@
-import { useState } from "react";
-import ItemList from "./ItemList";
 import ItemCards from "./ItemCards";
 const MenuCategory = ({ category, showItems, setShowIndex, index }) => {
   const { title, itemCards } = category;

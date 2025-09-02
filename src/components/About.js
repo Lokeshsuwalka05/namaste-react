@@ -1,33 +1,26 @@
-import User from "./User";
 import React from "react";
 import UserClass from "./UserClass";
-import User from "./User";
-import UserContext from "../utills/UserContext"
-class About extends React.Component{
-  constructor(props){
+class About extends React.Component {
+  constructor(props) {
     super(props);
     console.log("parent constructor");
-
   }
-  componentDidMount(){
+  componentDidMount() {
     console.log("parent componentDidMount ");
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log("parent componentDidUpdate ");
-
   }
-  render(){
+  render() {
     console.log("parent rendered");
-    return(
+    return (
       <>
-       
         <h1>Hello Guys</h1>
         <p>This is the About page Of Lokesh</p>
         {/* <User/> */}
         <UserClass name="first" />
-        
       </>
-    )
+    );
   }
 }
 

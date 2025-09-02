@@ -1,6 +1,6 @@
 import ResCard, { withDiscountLabel } from "./ResCard";
 // import resList from "../utills/mockdata";
-import { use, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useBody from "../utills/useBody";
