@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CLOUDINARY_IMG_CDN } from "../utills/constants";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utills/cartSlice";
-const Item = ({ item }) => {
+const ItemList = ({ item }) => {
   const [expanded, setexpanded] = useState(false);
   const { name, description, price, imageId, defaultPrice } = item.card.info;
   const shortText = description.slice(0, 150);
@@ -45,4 +45,4 @@ const Item = ({ item }) => {
     </>
   );
 };
-export default Item;
+export default ItemList;
