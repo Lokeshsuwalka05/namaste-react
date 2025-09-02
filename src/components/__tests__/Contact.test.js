@@ -5,6 +5,18 @@ import "@testing-library/jest-dom";
 
 describe("contact us page test cases", () => {
   // you can write 'it' at the place of 'test'
+  afterAll(() => {
+    console.log("after ALL");
+  });
+  beforeAll(() => {
+    console.log("before ALL");
+  });
+  afterEach(() => {
+    console.log("after Each");
+  });
+  beforeEach(() => {
+    console.log("before Each");
+  });
   it("should render contact page with name field", () => {
     render(<Contact />);
     const result = screen.getByLabelText("Name:");
